@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Ping Neon DB
         run: |
-          curl -X GET "https://your-vercel-app.vercel.app/api/keep-alive"
+          curl -X GET "https://artisans-craft.vercel.app/api/keep-alive"
         env:
           # Optional: Secure your endpoint (recommended)
           AUTH_TOKEN: ${{ secrets.VERCEL_AUTH_TOKEN }}
