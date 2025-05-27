@@ -5,14 +5,14 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
-export const dynamic = 'force-dynamic'; // Required for cron/background jobs
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    // Simple query to keep Neon alive
-    const result = await sql`SELECT 1`;
+    const { rows } = await sql`SELECT 1`;
+    console.log('Ping result:', rows[0]); // Optional logging
     return NextResponse.json(
-      { success: true, message: "Neon DB pinged successfully" },
+      { success: true, message: "Neon DB pinged successfully", data: rows[0] },
       { status: 200 }
     );
   } catch (error) {
